@@ -1,0 +1,8 @@
+node_modules
+.idea
+*.log
+build
+storybook-static
+*.log.*
+.npmrc
+*.iml

@@ -1,0 +1,100 @@
+{
+  "name": "codeyourass.boilerplate",
+  "version": "0.0.1",
+  "description": "CodeYourAss® (_._)® boilerplate for ReactJS Storybook",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "npm run lint",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "lint": "eslint --config .eslintrc 'app/**/*.js' 'app/**/*.jsx'",
+    "storybook": "NODE_ENV=storybook start-storybook -s ./.storybook/static -p 6006 --dont-track"
+  },
+  "author": "Petr Juna <petr.juna@codeyourass.com> (http://codeyourass.com)",
+  "license": "ISC",
+  "dependencies": {
+    "@kadira/storybook": "2.21.0",
+    "app-root-path": "2.0.1",
+    "classnames": "2.2.5",
+    "enzyme": "2.8.2",
+    "eslint": "3.19.0",
+    "eslint-config-airbnb": "14.1.0",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "3.0.1",
+    "eslint-plugin-react": "6.10.3",
+    "holderjs": "2.9.4",
+    "lodash": "4.16.4",
+    "react": "15.5.0",
+    "react-addons-css-transition-group": "15.3.0",
+    "react-dom": "15.5.0"
+  },
+  "devDependencies": {
+    "babel-core": "6.23.0",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-react-es2015": "1.2.0",
+    "babel-preset-react-hmre": "1.1.1",
+    "babel-runtime": "5.8.25",
+    "chai": "3.5.0",
+    "chai-enzyme": "0.6.1",
+    "copy-webpack-plugin": "4.0.1",
+    "css-loader": "0.28.0",
+    "jest-cli": "19.0.0",
+    "node-sass": "4.5.2",
+    "react-test-renderer": "^15.5.4",
+    "sass-loader": "6.0.3",
+    "storyshots": "3.2.2",
+    "style-loader": "0.16.1",
+    "svg-inline-loader": "0.7.1",
+    "url-loader": "0.5.8",
+    "webpack": "2.3.3"
+  },
+  "plugins": [
+    [
+      "transform-react-jsx",
+      {
+        "pragma": "hJSX"
+      }
+    ]
+  ],
+  "engines": {
+    "node": "6.4.0",
+    "npm": "3.10.3"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "moduleNameMapper": {
+      "^.*svg$": "<rootDir>/app/mocks/stub.js",
+      "^.*jpg$": "<rootDir>/app/mocks/stub.js",
+      "^.*png$": "<rootDir>/app/mocks/stub.js"
+    },
+    "testRegex": "(.*Specs.jsx?|specs.jsx?|snapshots.jsx|storyshots.js)$",
+    "roots": [
+      "<rootDir>/app"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "jsx"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "app/**/*.js",
+      "app/**/*.jsx",
+      "!app/**/specs.jsx",
+      "!app/**/snapshots.jsx",
+      "!app/**/*.Specs.jsx",
+      "!app/**/*.Specs.js",
+      "!app/**/*.specs.jsx",
+      "!app/**/*.specs.js",
+      "!app/**/index.js",
+      "!app/**/stories.jsx",
+      "!app/**/stories.js",
+      "!app/**/mocks.jsx",
+      "!app/**/mocks.js",
+      "!app/mocks/*"
+    ],
+    "coverageDirectory": "build/coverage"
+  }
+}

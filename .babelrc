@@ -1,0 +1,21 @@
+{
+  "presets": [
+    "es2015",
+    "react"
+  ],
+  "env": {
+    "node": {
+      "plugins": [
+        [
+          "babel-plugin-transform-require-stub",
+          {
+            "extensions": [".styl", ".png", ".jpg", ".svg"],
+            ".*": {
+              "path": true
+            }
+          }
+        ]
+      ]
+    }
+  }
+}
