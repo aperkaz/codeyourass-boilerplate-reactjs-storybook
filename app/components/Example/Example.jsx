@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Example = ({ children }) => (
   <h1>This is example. So say: {children}</h1>
