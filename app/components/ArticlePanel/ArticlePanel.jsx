@@ -12,46 +12,56 @@ const ArticlePanel = ({ data }) => (
   >
 
     <Grid>
-      <Row className="show-grid">
+      <Row
+        className="show-grid"
+        style={{
+          marginBottom: '20px',
+        }}
+      >
         <Col xs={12}>
-          <h2>{data.title}</h2>
+          <h1>{data.title}</h1>
         </Col>
       </Row>
-    </Grid>
 
-    <Grid>
       <Row className="show-grid">
         <Col xs={12}>
           <div
             style={{
               backgroundColor: 'black',
-              width: '100px',
+              width: '70px',
               height: '1px',
               margin: '0 auto',
             }}
           />
         </Col>
       </Row>
-    </Grid>
 
-    <Grid>
-      <Row className="show-grid">
+      <Row
+        className="show-grid"
+        style={{
+          marginTop: '20px',
+          marginBottom: '40px',
+        }}
+      >
         <Col xs={12}>
-          <h5>{data.subtitle}</h5>
+          <h4>{data.subtitle}</h4>
         </Col>
       </Row>
     </Grid>
 
     <Grid>
       <Row className="show-grid">
-        <Col xs={4}>
-          <div>{data.followers}
-            FOLLOWERS</div>
+        <Col sm={12} md={4}>
+          <div>
+            <b>
+              {data.followers}
+            </b>
+            &nbsp;FOLLOWERS</div>
         </Col>
-        <Col xs={4}>
+        <Col sm={12} md={4}>
           <div>{data.userName}</div>
         </Col>
-        <Col xs={4}>
+        <Col sm={12} md={4}>
           <div>{data.date}</div>
         </Col>
       </Row>
