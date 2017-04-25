@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import { Grid, Row, Col } from 'react-bootstrap';
 
 const ArticlePanel = ({ data }) => (
+
+ { /* Conditional rendering of component background */ },
   <div
     style={{
-      backgroundColor: '#ded324',
+      backgroundImage: (data.imagePath) ? 'url(' + data.imagePath + ')' : null,
+      backgroundColor: (data.imagePath || data.imagePath === '') ? '#ded324' : null ,
       textAlign: 'center',
       paddingBottom: '20px',
     }}
@@ -22,32 +25,39 @@ const ArticlePanel = ({ data }) => (
           <h1>{data.title}</h1>
         </Col>
       </Row>
-
-      <Row className="show-grid">
-        <Col xs={12}>
-          <div
-            style={{
-              backgroundColor: 'black',
-              width: '70px',
-              height: '1px',
-              margin: '0 auto',
-            }}
-          />
-        </Col>
-      </Row>
-
-      <Row
-        className="show-grid"
-        style={{
-          marginTop: '20px',
-          marginBottom: '40px',
-        }}
-      >
-        <Col xs={12}>
-          <h4>{data.subtitle}</h4>
-        </Col>
-      </Row>
     </Grid>
+
+    { /* Contional rendering of subtitle and separator */ },
+    {
+      (data.subtitle) ? (
+        <div>
+          <Row className="show-grid">
+            <Col xs={12}>
+              <div
+                style={{
+                  backgroundColor: 'black',
+                  width: '70px',
+                  height: '1px',
+                  margin: '0 auto',
+                }}
+              />
+            </Col>
+          </Row>
+          <Row
+            className="show-grid"
+            style={{
+              marginTop: '20px',
+              marginBottom: '40px',
+            }}
+          >
+            <Col xs={12}>
+              <h4>{data.subtitle}</h4>
+            </Col>
+          </Row>
+        </div>
+        ) : (
+          <div />
+    )}
 
     <Grid>
       <Row className="show-grid">
@@ -77,13 +87,13 @@ ArticlePanel.defaultProps = {
     subtitle: 'SUBTITLE. DOLOR AMET DOLO AMET',
     followers: 15,
     userName: 'DENISA JUNA',
-    date: '3 MARCH 2017',
-    imagePath: 'http://kingofwallpapers.com/gradient/gradient-011.jpg',
+    date: ' 3 March 2017',
+    imagePath: 'http://wallpapercave.com/wp/tmx6W6N.png',
   },
 };
 
 ArticlePanel.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.status,
 };
 
 export default ArticlePanel;
