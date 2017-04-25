@@ -10,7 +10,7 @@ const ArticlePanel = ({ data }) => (
       backgroundImage: (data.imagePath) ? 'url(' + data.imagePath + ')' : null,
       backgroundColor: (data.imagePath || data.imagePath === '') ? '#ded324' : null ,
       textAlign: 'center',
-      paddingBottom: '20px',
+      paddingBottom: '20px',      
     }}
   >
 
@@ -25,9 +25,9 @@ const ArticlePanel = ({ data }) => (
           <h1>{data.title}</h1>
         </Col>
       </Row>
-    </Grid>
 
-    { /* Contional rendering of subtitle and separator */ },
+
+    { /* Contional rendering of subtitle and separator */ }
     {
       (data.subtitle) ? (
         <div>
@@ -59,7 +59,6 @@ const ArticlePanel = ({ data }) => (
           <div />
     )}
 
-    <Grid>
       <Row className="show-grid">
         <Col sm={12} md={4}>
           <div>
@@ -83,12 +82,12 @@ const ArticlePanel = ({ data }) => (
 
 ArticlePanel.defaultProps = {
   data: {
-    title: 'TITLE',
-    subtitle: 'SUBTITLE. DOLOR AMET DOLO AMET',
-    followers: 15,
-    userName: 'DENISA JUNA',
-    date: ' 3 March 2017',
-    imagePath: 'http://wallpapercave.com/wp/tmx6W6N.png',
+    title: '',
+    subtitle: '',
+    followers: 0,
+    userName: '',
+    date: '',
+    imagePath: '',
   },
 };
 
