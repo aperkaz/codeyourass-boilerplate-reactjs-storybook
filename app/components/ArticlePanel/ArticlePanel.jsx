@@ -4,13 +4,13 @@ import { Grid, Row, Col } from 'react-bootstrap';
 
 const ArticlePanel = ({ data }) => (
 
- { /* Conditional rendering of component background */ },
+  /* Conditional rendering of component background */
   <div
     style={{
-      backgroundImage: (data.imagePath) ? 'url(' + data.imagePath + ')' : null,
-      backgroundColor: (data.imagePath || data.imagePath === '') ? '#ded324' : null ,
+      backgroundImage: (data.imagePath) ? `url( ${data.imagePath} )` : null,
+      backgroundColor: (data.imagePath || data.imagePath === '') ? '#ded324' : null,
       textAlign: 'center',
-      paddingBottom: '20px',      
+      paddingBottom: '20px',
     }}
   >
 
@@ -27,8 +27,8 @@ const ArticlePanel = ({ data }) => (
       </Row>
 
 
-    { /* Contional rendering of subtitle and separator */ }
-    {
+      {/* Contional rendering of subtitle and separator */ }
+      {
       (data.subtitle) ? (
         <div>
           <Row className="show-grid">
