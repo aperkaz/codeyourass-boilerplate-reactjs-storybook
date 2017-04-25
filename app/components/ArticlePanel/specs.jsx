@@ -53,7 +53,7 @@ describe('ArticlePanel', () => {
   });
 
   // assert the content of the new createt component
-  it('should contain div', () => {
+  it('should contain main div', () => {
     const wrapper = shallow(<ArticlePanel />);
     expect(wrapper.find('#main')).be.present();
   });
@@ -70,17 +70,26 @@ describe('ArticlePanel', () => {
     expect(wrapper.find('#main').props().style.backgroundImage).to.eql('url( http://kingofwallpapers.com/gradient/gradient-011.jpg )');
   });
 
-  it('rendering with subtitle', () => {
-    //const wrapper = shallow(<ArticlePanel props={subtitleProps}/>);
-    //expect(wrapper).to.containMatchingElement(  <h4 id="subtitle">SUBTITLE</h4>);
+  // aasert conditional renderings
+  it('rendering with subtitle and without image', () => {
+    const wrapper = mount(<ArticlePanel data={subtitleProps} />);
+
+    expect(wrapper.find('#subtitle').text()).to.equal('SUBTITLE');
+    expect(wrapper.find('#main').props().style.backgroundImage).to.equal(null);
   });
 
-  it('rendering with image', () => {
+  it('rendering with image and without subtitle', () => {
+    const wrapper = mount(<ArticlePanel data={imageProps} />);
 
+    expect(wrapper.find('#subtitle')).be.not.present();
+    expect(wrapper.find('#main').props().style.backgroundImage).to.eql('url( http://kingofwallpapers.com/gradient/gradient-011.jpg )');
   });
 
   it('rendering without image and subtitle', () => {
+    const wrapper = mount(<ArticlePanel data={baseProps} />);
 
+    expect(wrapper.find('#subtitle')).be.not.present();
+    expect(wrapper.find('#main').props().style.backgroundImage).to.eql(null);
   });
 
 });

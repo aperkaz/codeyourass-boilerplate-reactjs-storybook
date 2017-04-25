@@ -5,7 +5,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 const ArticlePanel = ({ data }) => (
 
   /* Conditional rendering of component background */
-  <div
+  <div id="main"
     style={{
       backgroundImage: (data.imagePath) ? `url( ${data.imagePath} )` : null,
       backgroundColor: (data.imagePath || data.imagePath === '') ? '#ded324' : null,
@@ -22,7 +22,9 @@ const ArticlePanel = ({ data }) => (
         }}
       >
         <Col xs={12}>
-          <h1>{data.title}</h1>
+          <div>
+            <h1 id="title">{data.title}</h1>
+          </div>
         </Col>
       </Row>
 
@@ -51,27 +53,29 @@ const ArticlePanel = ({ data }) => (
             }}
           >
             <Col xs={12}>
-              <h4>{data.subtitle}</h4>
+              <div>
+                <h4 id="subtitle">{data.subtitle}</h4>
+              </div>
             </Col>
           </Row>
         </div>
         ) : (
-          <div />
+          <div> </div>
     )}
 
       <Row className="show-grid">
         <Col sm={12} md={4}>
-          <div>
+          <div id="followers">
             <b>
               {data.followers}
             </b>
             &nbsp;FOLLOWERS</div>
         </Col>
         <Col sm={12} md={4}>
-          <div>{data.userName}</div>
+          <div id="userName">{data.userName}</div>
         </Col>
         <Col sm={12} md={4}>
-          <div>{data.date}</div>
+          <div id="date">{data.date}</div>
         </Col>
       </Row>
     </Grid>
