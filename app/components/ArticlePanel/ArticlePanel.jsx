@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Row, Col } from 'react-bootstrap';
 
-const ArticlePanel = ({ data }) => (
+// title, subtitle, followers, userName, date, imagePath
+const ArticlePanel = ({ article }) => (
 
   /* Conditional rendering of component background */
   <div id="main"
     style={{
-      backgroundImage: (data.imagePath) ? `url( ${data.imagePath} )` : null,
-      backgroundColor: (data.imagePath || data.imagePath === '') ? '#ded324' : null,
+      backgroundImage: (article.imagePath) ? `url( ${article.imagePath} )` : null,
+      backgroundColor: (article.imagePath || article.imagePath === '') ? '#ded324' : null,
       textAlign: 'center',
       paddingBottom: '20px',
     }}
@@ -23,7 +24,7 @@ const ArticlePanel = ({ data }) => (
       >
         <Col xs={12}>
           <div>
-            <h1 id="title">{data.title}</h1>
+            <h1 id="title">{article.title}</h1>
           </div>
         </Col>
       </Row>
@@ -31,7 +32,7 @@ const ArticlePanel = ({ data }) => (
 
       {/* Contional rendering of subtitle and separator */ }
       {
-      (data.subtitle) ? (
+      (article.subtitle) ? (
         <div>
           <Row className="show-grid">
             <Col xs={12}>
@@ -54,7 +55,7 @@ const ArticlePanel = ({ data }) => (
           >
             <Col xs={12}>
               <div>
-                <h4 id="subtitle">{data.subtitle}</h4>
+                <h4 id="subtitle">{article.subtitle}</h4>
               </div>
             </Col>
           </Row>
@@ -67,15 +68,15 @@ const ArticlePanel = ({ data }) => (
         <Col sm={12} md={4}>
           <div id="followers">
             <b>
-              {data.followers}
+              {article.followers}
             </b>
             &nbsp;FOLLOWERS</div>
         </Col>
         <Col sm={12} md={4}>
-          <div id="userName">{data.userName}</div>
+          <div id="userName">{article.userName}</div>
         </Col>
         <Col sm={12} md={4}>
-          <div id="date">{data.date}</div>
+          <div id="date">{article.date}</div>
         </Col>
       </Row>
     </Grid>
@@ -85,18 +86,21 @@ const ArticlePanel = ({ data }) => (
 );
 
 ArticlePanel.defaultProps = {
-  data: {
-    title: '',
-    subtitle: '',
-    followers: 0,
-    userName: '',
-    date: '',
-    imagePath: '',
-  },
+  title: 'DEFAULT TITLE',
+  subtitle: 'DEFAULT SUBTITLE',
+  followers: 0,
+  userName: 'USERNAME',
+  date: 'A DATE',
 };
 
+
 ArticlePanel.propTypes = {
-  data: PropTypes.status,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  followers: PropTypes.number.isRequired,
+  userName: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  imagePath: PropTypes.string,
 };
 
 export default ArticlePanel;
