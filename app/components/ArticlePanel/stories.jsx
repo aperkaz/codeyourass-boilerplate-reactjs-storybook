@@ -39,22 +39,27 @@ const completeProps = {
   imagePath: 'http://kingofwallpapers.com/gradient/gradient-011.jpg',
 };
 
-/* Add stories */
+console.log(...Object.values(completeProps));
 
-storiesOf('Alain\'s components', module)
+/* Add stories */
+storiesOf('ArticlePanel', module)
+
+.add('default', () => (
+  <ArticlePanel article={baseProps}/>
+))
 
 .add('With image and subtitle', () => (
-  <ArticlePanel data={completeProps} />
+  <ArticlePanel article={completeProps}  ></ArticlePanel>
 ))
 
 .add('With image, without subtitle', () => (
-  <ArticlePanel data={imageProps} />
+  <ArticlePanel article={imageProps} />
 ))
 
 .add('With subtitle, without image', () => (
-  <ArticlePanel data={subtitleProps} />
+  <ArticlePanel article={subtitleProps} />
 ))
 
 .add('Without image and subtitle', () => (
-  <ArticlePanel data={baseProps} />
+  <ArticlePanel article={baseProps} />
 ));

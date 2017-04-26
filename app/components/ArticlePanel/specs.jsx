@@ -11,7 +11,7 @@ const defaultProps = {
 };
 
 const baseProps = {
-  title: 'BASE TITLE',
+  title: 'TITLE',
   subtitle: '',
   followers: 1,
   userName: 'ALAIN PERKAZ',
@@ -48,19 +48,19 @@ const completeProps = {
 
 describe('ArticlePanel', () => {
   it('should render without blowing up', () => {
-    const wrapper = shallow(<ArticlePanel {...defaultProps} />);
+    const wrapper = shallow(<ArticlePanel article={defaultProps} />);
     expect(wrapper.length).to.eql(1);
   });
 
   // assert the content of the new createt component
   it('should contain main div', () => {
-    const wrapper = shallow(<ArticlePanel />);
+    const wrapper = shallow(<ArticlePanel article={baseProps}/>);
     expect(wrapper.find('#main')).be.present();
   });
 
   // assert props render correctly
   it('rendering with image and subtitle', () => {
-    const wrapper = mount(<ArticlePanel data={completeProps} />);
+    const wrapper = mount(<ArticlePanel article={completeProps} />);
 
     expect(wrapper.find('#title').text()).to.equal('COMPLETE TITLE');
     expect(wrapper.find('#subtitle').text()).to.equal('COMPLETE SUBTITLE');
@@ -72,21 +72,21 @@ describe('ArticlePanel', () => {
 
   // aasert conditional renderings
   it('rendering with subtitle and without image', () => {
-    const wrapper = mount(<ArticlePanel data={subtitleProps} />);
+    const wrapper = mount(<ArticlePanel article={subtitleProps} />);
 
     expect(wrapper.find('#subtitle').text()).to.equal('SUBTITLE');
     expect(wrapper.find('#main').props().style.backgroundImage).to.equal(null);
   });
 
   it('rendering with image and without subtitle', () => {
-    const wrapper = mount(<ArticlePanel data={imageProps} />);
+    const wrapper = mount(<ArticlePanel article={imageProps} />);
 
     expect(wrapper.find('#subtitle')).be.not.present();
     expect(wrapper.find('#main').props().style.backgroundImage).to.eql('url( http://kingofwallpapers.com/gradient/gradient-011.jpg )');
   });
 
   it('rendering without image and subtitle', () => {
-    const wrapper = mount(<ArticlePanel data={baseProps} />);
+    const wrapper = mount(<ArticlePanel article={baseProps} />);
 
     expect(wrapper.find('#subtitle')).be.not.present();
     expect(wrapper.find('#main').props().style.backgroundImage).to.eql(null);
