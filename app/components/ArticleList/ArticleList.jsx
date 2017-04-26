@@ -66,8 +66,8 @@ ArticleList.propTypes = {
       userName: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
       imagePath: PropTypes.string,
-    })
-  })
+    }),
+  }),
 };
 
 export default ArticleList;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import ArticleList from './ArticleList';
+import DynamicArticleGrid from './DynamicArticleGrid';
 
 /* Props for stories */
 const simpleArticleProps = {
@@ -30,20 +30,20 @@ const complexArticles = [
 
 /* Helper CSS class*/
 const style = {
-  width: '80%',
+  width: '100%',
   margin: '30px auto',
 };
 
-storiesOf('Article List', module)
+storiesOf('Dynamic Article Grid', module)
 
 .add('List with simple articles', () => (
   <div style={style}>
-    <ArticleList articles={simpleArticles} />
+    <DynamicArticleGrid articles={simpleArticles} />
   </div>
 ))
 
 .add('List with complex articles', () => (
   <div style={style}>
-    <ArticleList articles={complexArticles} />
+    <DynamicArticleGrid articles={complexArticles} />
   </div>
 ));

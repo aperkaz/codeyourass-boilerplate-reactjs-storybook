@@ -46,7 +46,7 @@ const style = {
 };
 
 /* Add stories */
-storiesOf('ArticlePanel', module)
+storiesOf('Article Panel', module)
 
 .add('default', () => (
   <div style={style}>
