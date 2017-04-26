@@ -6,7 +6,8 @@ import { Grid, Row, Col } from 'react-bootstrap';
 const ArticlePanel = ({ article }) => (
 
   /* Conditional rendering of component's background */
-  <div id="main"
+  <div
+    id="article-panel-main"
     style={{
       backgroundImage: (article.imagePath) ? `url( ${article.imagePath} )` : null,
       backgroundColor: (!article.imagePath || article.imagePath === '') ? '#ded324' : null,
@@ -15,9 +16,11 @@ const ArticlePanel = ({ article }) => (
     }}
   >
 
-    <Grid style={{
-        width: '100%'
-      }}>
+    <Grid
+      style={{
+        width: '100%',
+      }}
+    >
       <Row
         className="show-grid"
         style={{
@@ -63,11 +66,11 @@ const ArticlePanel = ({ article }) => (
           </Row>
         </div>
         ) : (
-          <div> </div>
+          <div />
     )}
 
       <Row className="show-grid">
-        <Col sm={12} sm={4}>
+        <Col xs={12} sm={4}>
           {/* Conditional rendering of followers */}
           { (article.followers) ? (
             <div id="followers">
@@ -77,8 +80,7 @@ const ArticlePanel = ({ article }) => (
               &nbsp;FOLLOWERS
             </div>
           ) : (
-            <div>
-            </div>
+            <div />
           )}
 
         </Col>
@@ -91,28 +93,30 @@ const ArticlePanel = ({ article }) => (
       </Row>
     </Grid>
 
-
-
   </div>
 
 );
 
 ArticlePanel.defaultProps = {
-  title: 'DEFAULT TITLE',
-  subtitle: 'DEFAULT SUBTITLE',
-  followers: 0,
-  userName: 'USERNAME',
-  date: 'A DATE',
+  article: {
+    title: 'DEFAULT TITLE',
+    subtitle: 'DEFAULT SUBTITLE',
+    followers: 0,
+    userName: 'USERNAME',
+    date: 'A DATE',
+  },
 };
 
 
 ArticlePanel.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string,
-  followers: PropTypes.number.isRequired,
-  userName: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  imagePath: PropTypes.string,
+  article: {
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string,
+    followers: PropTypes.number.isRequired,
+    userName: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    imagePath: PropTypes.string,
+  },
 };
 
 export default ArticlePanel;

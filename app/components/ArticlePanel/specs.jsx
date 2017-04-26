@@ -1,7 +1,7 @@
 import React from 'react';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { shallow, render, mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import ArticlePanel from './ArticlePanel';
 
 /* Props for tests */
@@ -54,8 +54,8 @@ describe('ArticlePanel', () => {
 
   // assert the content of the new createt component
   it('should contain main div', () => {
-    const wrapper = shallow(<ArticlePanel article={baseProps}/>);
-    expect(wrapper.find('#main')).be.present();
+    const wrapper = shallow(<ArticlePanel article={baseProps} />);
+    expect(wrapper.find('#article-panel-main')).be.present();
   });
 
   // assert props render correctly
@@ -67,7 +67,7 @@ describe('ArticlePanel', () => {
     expect(wrapper.find('#followers').text()).to.equal('4 FOLLOWERS');
     expect(wrapper.find('#userName').text()).to.equal('ALAIN PERKAZ');
     expect(wrapper.find('#date').text()).to.equal('1 MARCH 2017');
-    expect(wrapper.find('#main').props().style.backgroundImage).to.eql('url( http://kingofwallpapers.com/gradient/gradient-011.jpg )');
+    expect(wrapper.find('#article-panel-main').props().style.backgroundImage).to.eql('url( http://kingofwallpapers.com/gradient/gradient-011.jpg )');
   });
 
   // aasert conditional renderings
@@ -75,23 +75,22 @@ describe('ArticlePanel', () => {
     const wrapper = mount(<ArticlePanel article={subtitleProps} />);
 
     expect(wrapper.find('#subtitle').text()).to.equal('SUBTITLE');
-    expect(wrapper.find('#main').props().style.backgroundImage).to.equal(null);
+    expect(wrapper.find('#article-panel-main').props().style.backgroundImage).to.equal(null);
   });
 
   it('rendering with image and without subtitle', () => {
     const wrapper = mount(<ArticlePanel article={imageProps} />);
 
     expect(wrapper.find('#subtitle')).be.not.present();
-    expect(wrapper.find('#main').props().style.backgroundImage).to.eql('url( http://kingofwallpapers.com/gradient/gradient-011.jpg )');
+    expect(wrapper.find('#article-panel-main').props().style.backgroundImage).to.eql('url( http://kingofwallpapers.com/gradient/gradient-011.jpg )');
   });
 
   it('rendering without image and subtitle', () => {
     const wrapper = mount(<ArticlePanel article={baseProps} />);
 
     expect(wrapper.find('#subtitle')).be.not.present();
-    expect(wrapper.find('#main').props().style.backgroundImage).to.eql(null);
+    expect(wrapper.find('#article-panel-main').props().style.backgroundImage).to.eql(null);
   });
-
 });
 
 chai.use(chaiEnzyme());

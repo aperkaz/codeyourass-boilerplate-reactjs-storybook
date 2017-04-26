@@ -41,8 +41,8 @@ const completeProps = {
 
 /* CSS class*/
 const style = {
-    width: '80%',
-    margin: '30px auto',
+  width: '80%',
+  margin: '30px auto',
 };
 
 /* Add stories */
@@ -50,13 +50,13 @@ storiesOf('ArticlePanel', module)
 
 .add('default', () => (
   <div style={style}>
-    <ArticlePanel article={baseProps}/>
+    <ArticlePanel article={baseProps} />
   </div>
 ))
 
 .add('With image and subtitle', () => (
   <div style={style}>
-    <ArticlePanel article={completeProps}  />
+    <ArticlePanel article={completeProps} />
   </div>
 ))
 
