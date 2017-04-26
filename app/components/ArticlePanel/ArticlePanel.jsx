@@ -5,17 +5,19 @@ import { Grid, Row, Col } from 'react-bootstrap';
 // title, subtitle, followers, userName, date, imagePath
 const ArticlePanel = ({ article }) => (
 
-  /* Conditional rendering of component background */
+  /* Conditional rendering of component's background */
   <div id="main"
     style={{
       backgroundImage: (article.imagePath) ? `url( ${article.imagePath} )` : null,
-      backgroundColor: (article.imagePath || article.imagePath === '') ? '#ded324' : null,
+      backgroundColor: (!article.imagePath || article.imagePath === '') ? '#ded324' : null,
       textAlign: 'center',
       paddingBottom: '20px',
     }}
   >
 
-    <Grid>
+    <Grid style={{
+        width: '100%'
+      }}>
       <Row
         className="show-grid"
         style={{
@@ -50,7 +52,7 @@ const ArticlePanel = ({ article }) => (
             className="show-grid"
             style={{
               marginTop: '20px',
-              marginBottom: '40px',
+              marginBottom: '35px',
             }}
           >
             <Col xs={12}>
@@ -65,21 +67,31 @@ const ArticlePanel = ({ article }) => (
     )}
 
       <Row className="show-grid">
-        <Col sm={12} md={4}>
-          <div id="followers">
-            <b>
-              {article.followers}
-            </b>
-            &nbsp;FOLLOWERS</div>
+        <Col sm={12} sm={4}>
+          {/* Conditional rendering of followers */}
+          { (article.followers) ? (
+            <div id="followers">
+              <b>
+                {article.followers}
+              </b>
+              &nbsp;FOLLOWERS
+            </div>
+          ) : (
+            <div>
+            </div>
+          )}
+
         </Col>
-        <Col sm={12} md={4}>
+        <Col xs={12} sm={4}>
           <div id="userName">{article.userName}</div>
         </Col>
-        <Col sm={12} md={4}>
+        <Col xs={12} sm={4}>
           <div id="date">{article.date}</div>
         </Col>
       </Row>
     </Grid>
+
+
 
   </div>
 
