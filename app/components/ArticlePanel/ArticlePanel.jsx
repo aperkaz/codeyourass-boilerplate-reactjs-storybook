@@ -109,14 +109,14 @@ ArticlePanel.defaultProps = {
 
 
 ArticlePanel.propTypes = {
-  article: {
+  article: PropTypes.shape({
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
     followers: PropTypes.number.isRequired,
     userName: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     imagePath: PropTypes.string,
-  },
+  }),
 };
 
 export default ArticlePanel;
